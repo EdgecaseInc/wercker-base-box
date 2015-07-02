@@ -1,6 +1,6 @@
 name: default
 version: 1.0.0
-inherits: wercker/ubuntu14.04
+inherits: leipert/box-ubuntu14.04-webessentials
 type: main
 platform: ubuntu@14.04
 description: generic build box
@@ -35,4 +35,7 @@ script: |
   sudo apt-get install python-pip -y
   echo 'Grabbing AWS python cli...'
   sudo pip install boto3
+  echo 'Installing docker'
+  sudo curl -v https://get.docker.com/builds/Linux/x86_64/docker-1.5.0 -o /usr/bin/docker
+  sudo wget -O /etc/init/docker.conf https://raw.github.com/dotcloud/docker/master/contrib/init/upstart/docker.conf
 
